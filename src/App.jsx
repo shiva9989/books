@@ -1,6 +1,5 @@
 // src/App.jsx
 import { useState } from 'react';
-import dotenv from 'dotenv';
 import SearchForm from './components/SearchForm';
 import SearchResults from './components/SearchResults';
 import BookDetails from './components/BookDetails';
@@ -11,8 +10,8 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [searchQuery, setSearchQuery] = useState('');
-  dotenv.config();
-  const API_KEY = process.env.API_KEY;
+  
+  const API_KEY = import.meta.env.API_KEY;
 
   const handleSearch = async (query) => {
     setLoading(true);
@@ -64,7 +63,7 @@ function App() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-8">
       <header className="mb-8">
-        <h1 className="text-4xl font-bold text-primary-800 mb-6">Literary Explorer</h1>
+        <h1 className="text-4xl font-bold text-primary-800 mb-6">Book Explorer</h1>
         <SearchForm onSearch={handleSearch} />
       </header>
       
@@ -74,7 +73,7 @@ function App() {
             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
           </svg>
-          Loading your literary discoveries...
+          Loading your Book discoveries...
         </div>
       )}
       
